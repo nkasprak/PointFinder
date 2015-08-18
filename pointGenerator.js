@@ -1,6 +1,26 @@
-//tool to efficiently find the "kink" points of any function
-//very useful for income tax charts
-//by Nick Kasprak, CBPP
+/*Tool to efficiently find the "kink" points of any function
+very useful for income tax charts
+by Nick Kasprak, CBPP
+
+Usage:
+
+Create the point generator object:
+
+	var myGenerator = new pointGenerator(myFunction, myIteratorInterval, maxStep);
+	
+	myFunction = function to find kink points
+	myIteratorInterval = basic iterval to recurse over
+	maxStep = largest allowed interval - patterns smaller than this that recur with a frequency
+	that is a multiple of the interator may be lost
+	
+	For example, using 7 for the iterator interval and 1000 for max step means that the largest
+	and starting interval will be 343 (7^3) as 2401 (7^4) is too large
+
+Get the kink points of the function within a range:
+
+	var theKinkPoints = myGenerator.outputXPoints(lowEndOfRange, highEndOfRange);
+
+*/
 
 var pointGenerator = function(f, iteratorInterval, maxStep) {
 	"use strict";
